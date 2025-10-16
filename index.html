@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moreira Method Brainrot Vault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;500&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: #0d0d0d;
+      }
+      .font-chakra {
+        font-family: 'Chakra Petch', sans-serif;
+      }
+      .font-inter {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-mono {
+        font-family: 'Fira Code', monospace;
+      }
+
+      /* Custom scrollbar for terminal */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #4a044e;
+        border-radius: 4px;
+        border: 2px solid #1a1a1a;
+      }
+
+      .static-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        z-index: 0;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%23FFFFFF"%3E%3Cpath d="M0 0h800v800H0z"/%3E%3Cpath d="M200 0v800M400 0v800M600 0v800M0 200h800M0 400h800M0 600h800"/%3E%3C/g%3E%3C/svg%3E');
+        animation: static-bg 8s linear infinite;
+      }
+
+      @keyframes static-bg {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(5px, -5px); }
+        50% { transform: translate(-5px, 5px); }
+        75% { transform: translate(5px, 5px); }
+        100% { transform: translate(0, 0); }
+      }
+
+      .glitch {
+        position: relative;
+        color: white;
+        text-shadow: 0 0 5px #8B5CF6, 0 0 10px #8B5CF6;
+      }
+
+      .glitch:before,
+      .glitch:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0d0d0d;
+        overflow: hidden;
+        clip-path: inset(50% 50% 50% 50%);
+      }
+
+      .glitch:before {
+        left: -2px;
+        text-shadow: -1px 0 #3B82F6;
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+      }
+
+      .glitch:after {
+        left: 2px;
+        text-shadow: -1px 0 #10B981;
+        animation: glitch-anim-2 2s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch-anim-1 {
+        0% { clip-path: inset(40% 0 60% 0); }
+        20% { clip-path: inset(10% 0 85% 0); }
+        40% { clip-path: inset(50% 0 50% 0); }
+        60% { clip-path: inset(25% 0 70% 0); }
+        80% { clip-path: inset(80% 0 10% 0); }
+        100% { clip-path: inset(50% 0 50% 0); }
+      }
+
+      @keyframes glitch-anim-2 {
+        0% { clip-path: inset(20% 0 80% 0); }
+        20% { clip-path: inset(90% 0 5% 0); }
+        40% { clip-path: inset(40% 0 60% 0); }
+        60% { clip-path: inset(70% 0 20% 0); }
+        80% { clip-path: inset(10% 0 80% 0); }
+        100% { clip-path: inset(40% 0 60% 0); }
+      }
+      
+      /* New animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 20px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .animation-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+      }
+
+      /* Animation for console text and success message */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .console-line-animation {
+        animation: fadeIn 0.3s ease-out;
+      }
+      .success-animation {
+        animation: fadeIn 0.5s 0.2s ease-out forwards;
+        opacity: 0;
+      }
+
+      /* Animation for progress bar gradient */
+      @keyframes gradient-anim {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      /* Animation for confirmation modal */
+      @keyframes modal-fade-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .modal-animation {
+        animation: modal-fade-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="font-inter">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
